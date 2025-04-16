@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz - Mapa Digital</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz - Seu Negócio no Mapa Digital</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
     }
     .logo-bar {
       position: fixed;
       top: 0;
       width: 100%;
       background: #ffffff;
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       z-index: 9999;
-      text-align: center;
     }
     .logo-bar img {
-      height: 150px;
+      max-height: 150px;
       width: auto;
-      display: block;
-      margin: 0 auto;
     }
     .progress-container {
       width: 100%;
       background-color: #ddd;
       position: fixed;
-      top: 150px;
+      top: 160px;
       z-index: 9998;
     }
     .progress-bar {
       width: 0%;
-      height: 8px;
+      height: 12px;
       background-color: #1b6ca8;
       transition: width 0.3s ease;
     }
     .quiz-container {
       max-width: 600px;
-      margin: 220px auto 40px;
-      background-color: #fff;
+      margin: 200px auto 40px;
+      background-color: #f0f0f0;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    h1 {
-      color: #1b6ca8;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     }
     .question {
       margin: 20px 0;
       font-weight: bold;
-      font-size: 18px;
     }
     .options {
       text-align: left;
@@ -90,49 +84,50 @@
     .step.active {
       display: block;
     }
-    #result {
+    .result {
       display: none;
-      margin-top: 30px;
     }
     .cta-button {
       display: inline-block;
       background-color: #1b6ca8;
       color: #fff;
-      padding: 12px 25px;
-      border-radius: 8px;
+      padding: 15px 30px;
+      font-size: 18px;
       text-decoration: none;
-      font-size: 16px;
-      margin-top: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
     }
     .popup {
       position: fixed;
       bottom: 20px;
       left: 20px;
       background-color: #1b6ca8;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      z-index: 9999;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10000;
+      animation: fadein 0.5s, fadeout 0.5s 3.5s;
     }
-    .popup.show {
-      opacity: 1;
+    @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 20px; opacity: 1;}
+    }
+    @keyframes fadeout {
+      from {bottom: 20px; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
     }
   </style>
 </head>
 <body>
   <div class="logo-bar">
-    <img src="topo.png" alt="Logo">
+    <img src="images/topo.png" alt="Logo" />
   </div>
   <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-bar" id="progress-bar"></div>
   </div>
-  <div class="quiz-container" id="quizContainer">
-    <div class="quiz-container">
-    <h1>Seu negócio está pronto para receber mais clientes pelo WhatsApp?</h1>
-    <p>Responda 10 perguntas rápidas e descubra se você está pronto para colocar seu negócio no mapa digital!</p>
+
+  <div class="quiz-container">
     <form id="quiz-form">
       <div class="step active">
         <p class="question">1. Qual é o seu tipo de negócio?</p>
@@ -175,42 +170,42 @@
       <div class="step">
         <p class="question">5. Você tem um computador ou celular para usar nas campanhas?</p>
         <div class="options">
-          <label><input type="radio" name="q4" /> Sim</label>
-          <label><input type="radio" name="q4" /> Não</label>
-        </div>
-        <button type="button" onclick="nextStep()">Próximo</button>
-      </div>
-      <div class="step">
-        <p class="question">6. Seu negócio atende apenas a sua cidade?</p>
-        <div class="options">
           <label><input type="radio" name="q5" /> Sim</label>
           <label><input type="radio" name="q5" /> Não</label>
         </div>
         <button type="button" onclick="nextStep()">Próximo</button>
       </div>
       <div class="step">
+        <p class="question">6. Seu negócio atende apenas a sua cidade?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" /> Sim</label>
+          <label><input type="radio" name="q6" /> Não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
+      </div>
+      <div class="step">
         <p class="question">7. Hoje você usa seu WhatsApp para:</p>
         <div class="options">
-          <label><input type="radio" name="q6" /> Atender clientes</label>
-          <label><input type="radio" name="q6" /> Fechar vendas</label>
-          <label><input type="radio" name="q6" /> Só conversa informal</label>
-          <label><input type="radio" name="q6" /> Ainda não uso</label>
+          <label><input type="radio" name="q7" /> Atender clientes</label>
+          <label><input type="radio" name="q7" /> Fechar vendas</label>
+          <label><input type="radio" name="q7" /> Só conversa informal</label>
+          <label><input type="radio" name="q7" /> Ainda não uso</label>
         </div>
         <button type="button" onclick="nextStep()">Próximo</button>
       </div>
       <div class="step">
         <p class="question">8. Você usa WhatsApp Business?</p>
         <div class="options">
-          <label><input type="radio" name="q7" /> Sim</label>
-          <label><input type="radio" name="q7" /> Não</label>
+          <label><input type="radio" name="q8" /> Sim</label>
+          <label><input type="radio" name="q8" /> Não</label>
         </div>
         <button type="button" onclick="nextStep()">Próximo</button>
       </div>
       <div class="step">
         <p class="question">9. Você conhece as etiquetas e recursos de organização do WhatsApp Business?</p>
         <div class="options">
-          <label><input type="radio" name="q8" /> Sim</label>
-          <label><input type="radio" name="q8" /> Não</label>
+          <label><input type="radio" name="q9" /> Sim</label>
+          <label><input type="radio" name="q9" /> Não</label>
         </div>
         <button type="button" onclick="nextStep()">Próximo</button>
       </div>
@@ -224,70 +219,67 @@
         </div>
         <button type="button" onclick="showResult()">Ver Resultado</button>
       </div>
+      <!-- Aqui entram as 10 perguntas do quiz como te mostrei antes -->
     </form>
 
-    <div id="result">
-      <h2>Parabéns!</h2>
-      <p>Você está pronto para colocar seu negócio no Mapa Digital.</p>
-      <a href="https://pay.cakto.com.br/zh2w3zh" class="cta-button" target="_blank">
-        Quero Colocar Meu Negócio no Mapa Digital
-      </a>
+    <div id="result" class="result">
+      <h2>Você está pronto para dar o próximo passo!</h2>
+      <p>Com base nas suas respostas, você está no momento ideal para aplicar o método que vai transformar seu WhatsApp em uma máquina de vendas.</p>
+      <a href="https://pay.cakto.com.br/zh2w3zh" class="cta-button">Acessar o Método Agora</a>
     </div>
   </div>
-  <div class="popup" id="popup"></div>
 
   <script>
-     <div class="popup" id="popup"></div>
-
-  <script>
-    const steps = document.querySelectorAll('.step');
-    const nextBtn = document.getElementById('nextBtn');
-    const result = document.getElementById('result');
-    const progressBar = document.getElementById('progressBar');
     let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const progressBar = document.getElementById("progress-bar");
 
-    nextBtn.addEventListener('click', () => {
-      if (currentStep < steps.length - 1) {
-        steps[currentStep].classList.remove('active');
-        currentStep++;
-        steps[currentStep].classList.add('active');
-        progressBar.style.width = `${(currentStep / steps.length) * 100}%`;
-        if (currentStep === steps.length - 1) {
-          nextBtn.textContent = 'Finalizar';
-        }
-      } else {
-        document.getElementById('quizContainer').innerHTML = result.outerHTML;
-        result.style.display = 'block';
+    function nextStep() {
+      steps[currentStep].classList.remove("active");
+      currentStep++;
+      if (currentStep < steps.length) {
+        steps[currentStep].classList.add("active");
+        updateProgress();
       }
-    });
+    }
+
+    function showResult() {
+      document.getElementById("quiz-form").style.display = "none";
+      document.getElementById("result").style.display = "block";
+      progressBar.style.width = "100%";
+    }
+
+    function updateProgress() {
+      const progress = ((currentStep + 1) / steps.length) * 100;
+      progressBar.style.width = progress + "%";
+    }
 
     function showPopup(message, delay) {
       setTimeout(() => {
-        const popup = document.getElementById('popup');
-        popup.textContent = message;
-        popup.classList.add('show');
-        setTimeout(() => popup.classList.remove('show'), 5000);
+        const popup = document.createElement("div");
+        popup.className = "popup";
+        popup.innerText = message;
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 4000);
       }, delay);
     }
 
-    // Simulações
-    showPopup("Márcia colocou seu negócio no Mapa Digital", 10000);
-    showPopup("Agora somos 1996 alunos", 12000);
-    showPopup("Kelvyn colocou seu negócio no Mapa Digital", 40000);
-    showPopup("Agora somos 1997 alunos", 42000);
-    showPopup("Jessica colocou seu negócio no Mapa Digital", 60000);
-    showPopup("Agora somos 1998 alunos", 62000);
-    showPopup("Alex colocou seu negócio no Mapa Digital", 85000);
-    showPopup("Agora somos 1999 alunos", 87000);
-    showPopup("Renata colocou seu negócio no Mapa Digital", 105000);
-    showPopup("Agora somos 2000 alunos", 107000);
-    showPopup("Anderson colocou seu negócio no Mapa Digital", 125000);
-    showPopup("Agora somos 2001 alunos", 127000);
-    showPopup("Carlos colocou seu negócio no Mapa Digital", 155000);
-    showPopup("Agora somos 2002 alunos", 157000);
+    showPopup("Márcia Carvalho colocou seu negócio no Mapa Digital", 10000);
+    showPopup("Agora somos 1996 alunos", 13000);
+    showPopup("Kelvyn Dias colocou seu negócio no Mapa Digital", 40000);
+    showPopup("Agora somos 1997 alunos", 43000);
+    showPopup("Jessica Matos colocou seu negócio no Mapa Digital", 60000);
+    showPopup("Agora somos 1998 alunos", 63000);
+    showPopup("Alex Lemes colocou seu negócio no Mapa Digital", 85000);
+    showPopup("Agora somos 1999 alunos", 88000);
+    showPopup("Renata Noleto colocou seu negócio no Mapa Digital", 105000);
+    showPopup("Agora somos 2000 alunos", 108000);
+    showPopup("Anderson Oliveira colocou seu negócio no Mapa Digital", 125000);
+    showPopup("Agora somos 2001 alunos", 128000);
+    showPopup("Carlos Fabricio colocou seu negócio no Mapa Digital", 155000);
+    showPopup("Agora somos 2002 alunos", 158000);
     showPopup("João Pedro colocou seu negócio no Mapa Digital", 195000);
-    showPopup("Agora somos 2003 alunos", 197000);
-  </script>
+    showPopup("Agora somos 2003 alunos", 198000);
   </script>
 </body>
 </html>
