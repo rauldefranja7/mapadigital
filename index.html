@@ -121,7 +121,7 @@
 </head>
 <body>
   <div class="logo-bar">
-    <img src="images/topo.png" alt="Logo" />
+    <img src="images/topo" alt="Logo" />
   </div>
   <div class="progress-container">
     <div class="progress-bar" id="progress-bar"></div>
@@ -230,6 +230,7 @@
   </div>
 
   <script>
+document.addEventListener("DOMContentLoaded", function () {
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const progressBar = document.getElementById("progress-bar");
@@ -280,6 +281,11 @@
     showPopup("Agora somos 2002 alunos", 158000);
     showPopup("João Pedro colocou seu negócio no Mapa Digital", 195000);
     showPopup("Agora somos 2003 alunos", 198000);
-  </script>
+  
+  window.nextStep = nextStep;
+  window.showResult = showResult;
+});
+</script>
+
 </body>
 </html>
