@@ -22,14 +22,16 @@
       text-align: center;
     }
     .logo-bar img {
-      max-height: 160px;
+      height: 150px;
       width: auto;
+      display: block;
+      margin: 0 auto;
     }
     .progress-container {
       width: 100%;
       background-color: #ddd;
       position: fixed;
-      top: 160px;
+      top: 150px;
       z-index: 9998;
     }
     .progress-bar {
@@ -40,7 +42,7 @@
     }
     .quiz-container {
       max-width: 600px;
-      margin: 200px auto 40px;
+      margin: 220px auto 40px;
       background-color: #fff;
       padding: 30px;
       border-radius: 10px;
@@ -122,112 +124,120 @@
 </head>
 <body>
   <div class="logo-bar">
- <div class="logo-bar">
     <img src="topo.png" alt="Logo">
   </div>
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
   <div class="quiz-container" id="quizContainer">
-    <div class="step active">
-      <div class="question">1. Qual é o seu tipo de negócio?</div>
-      <div class="options">
-        <label><input type="radio" name="q1"> Alimentação</label>
-        <label><input type="radio" name="q1"> Moda / Beleza</label>
-        <label><input type="radio" name="q1"> Serviços</label>
-        <label><input type="radio" name="q1"> Outro</label>
+    <div class="quiz-container">
+    <h1>Seu negócio está pronto para receber mais clientes pelo WhatsApp?</h1>
+    <p>Responda 10 perguntas rápidas e descubra se você está pronto para colocar seu negócio no mapa digital!</p>
+    <form id="quiz-form">
+      <div class="step active">
+        <p class="question">1. Qual é o seu tipo de negócio?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" /> Alimentação</label>
+          <label><input type="radio" name="q1" /> Moda / Beleza</label>
+          <label><input type="radio" name="q1" /> Serviços</label>
+          <label><input type="radio" name="q1" /> Outro</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">2. Você já anuncia online?</div>
-      <div class="options">
-        <label><input type="radio" name="q2"> Sim</label>
-        <label><input type="radio" name="q2"> Não</label>
+      <div class="step">
+        <p class="question">2. Você já faz anúncios online?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" /> Sim</label>
+          <label><input type="radio" name="q2" /> Não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">3. Você tem interesse em aumentar seu faturamento em quanto?</div>
-      <div class="options">
-        <label><input type="radio" name="q3"> R$1.000</label>
-        <label><input type="radio" name="q3"> R$2.000</label>
-        <label><input type="radio" name="q3"> R$3.000</label>
-        <label><input type="radio" name="q3"> R$4.000+</label>
+      <div class="step">
+        <p class="question">3. Você tem interesse em aumentar seu faturamento em quanto?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" /> R$1.000</label>
+          <label><input type="radio" name="q3" /> R$2.000</label>
+          <label><input type="radio" name="q3" /> R$3.000</label>
+          <label><input type="radio" name="q3" /> R$4.000 ou mais</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">4. Você sente que está perdendo vendas por não ter presença digital?</div>
-      <div class="options">
-        <label><input type="radio" name="q4"> Sim, com certeza</label>
-        <label><input type="radio" name="q4"> Talvez um pouco</label>
-        <label><input type="radio" name="q4"> Não tenho certeza</label>
-        <label><input type="radio" name="q4"> Não, acho que não</label>
+      <div class="step">
+        <p class="question">4. Você sente que está perdendo vendas por não ter presença digital?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" /> Sim, com certeza</label>
+          <label><input type="radio" name="q4" /> Talvez um pouco</label>
+          <label><input type="radio" name="q4" /> Não tenho certeza</label>
+          <label><input type="radio" name="q4" /> Não, acho que não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">5. Você tem um celular ou computador para colocar seu negócio no mapa digital?</div>
-      <div class="options">
-        <label><input type="radio" name="q5"> Sim</label>
-        <label><input type="radio" name="q5"> Não</label>
+      <div class="step">
+        <p class="question">5. Você tem um computador ou celular para usar nas campanhas?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" /> Sim</label>
+          <label><input type="radio" name="q4" /> Não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">6. Seu negócio atende apenas sua cidade?</div>
-      <div class="options">
-        <label><input type="radio" name="q6"> Sim</label>
-        <label><input type="radio" name="q6"> Não</label>
+      <div class="step">
+        <p class="question">6. Seu negócio atende apenas a sua cidade?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" /> Sim</label>
+          <label><input type="radio" name="q5" /> Não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">7. Hoje você usa seu WhatsApp para:</div>
-      <div class="options">
-        <label><input type="radio" name="q7"> Vendas e atendimento</label>
-        <label><input type="radio" name="q7"> Apenas conversa pessoal</label>
-        <label><input type="radio" name="q7"> Não uso muito</label>
+      <div class="step">
+        <p class="question">7. Hoje você usa seu WhatsApp para:</p>
+        <div class="options">
+          <label><input type="radio" name="q6" /> Atender clientes</label>
+          <label><input type="radio" name="q6" /> Fechar vendas</label>
+          <label><input type="radio" name="q6" /> Só conversa informal</label>
+          <label><input type="radio" name="q6" /> Ainda não uso</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">8. Você usa o WhatsApp Business?</div>
-      <div class="options">
-        <label><input type="radio" name="q8"> Sim</label>
-        <label><input type="radio" name="q8"> Não</label>
+      <div class="step">
+        <p class="question">8. Você usa WhatsApp Business?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" /> Sim</label>
+          <label><input type="radio" name="q7" /> Não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">9. Você conhece as facilidades do WhatsApp Business?</div>
-      <div class="options">
-        <label><input type="radio" name="q9"> Sim</label>
-        <label><input type="radio" name="q9"> Não</label>
+      <div class="step">
+        <p class="question">9. Você conhece as etiquetas e recursos de organização do WhatsApp Business?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" /> Sim</label>
+          <label><input type="radio" name="q8" /> Não</label>
+        </div>
+        <button type="button" onclick="nextStep()">Próximo</button>
       </div>
-    </div>
-    <div class="step">
-      <div class="question">10. Você quer começar a receber clientes automaticamente no WhatsApp ainda hoje?</div>
-      <div class="options">
-        <label><input type="radio" name="q10"> Sim</label>
-        <label><input type="radio" name="q10"> Não</label>
-      </div>
-    </div>
-    <div class="step">
-      <div class="question">11. Se existisse um método simples pra atrair clientes automaticamente, você começaria hoje?</div>
-      <div class="options">
-        <label><input type="radio" name="q11"> Sim, com certeza</label>
-        <label><input type="radio" name="q11"> Sim, mas tenho dúvidas</label>
-        <label><input type="radio" name="q11"> Não sei</label>
-        <label><input type="radio" name="q11"> Não agora</label>
-      </div>
-    </div>
+      <div class="step">
+        <p class="question">10. Se existisse um método simples pra atrair clientes automaticamente, você começaria hoje?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" /> Sim, com certeza</label>
+          <label><input type="radio" name="q10" /> Sim, mas tenho dúvidas</label>
+          <label><input type="radio" name="q10" /> Não sei</label>
+          <label><input type="radio" name="q10" /> Não agora</label>
+        </div>
         <button type="button" onclick="showResult()">Ver Resultado</button>
       </div>
     </form>
 
-    <div id="result" class="result">
-      <h2>Você está pronto para dar o próximo passo!</h2>
-      <p>Com base nas suas respostas, você está no momento ideal para aplicar o método que vai transformar seu WhatsApp em uma máquina de vendas.</p>
-      <a href="https://pay.cakto.com.br/zh2w3zh" class="cta-button">Acessar o Método Agora</a>
+    <div id="result">
+      <h2>Parabéns!</h2>
+      <p>Você está pronto para colocar seu negócio no Mapa Digital.</p>
+      <a href="https://pay.cakto.com.br/zh2w3zh" class="cta-button" target="_blank">
+        Quero Colocar Meu Negócio no Mapa Digital
+      </a>
     </div>
   </div>
-
-
   <div class="popup" id="popup"></div>
+
+  <script>
+     <div class="popup" id="popup"></div>
 
   <script>
     const steps = document.querySelectorAll('.step');
@@ -277,6 +287,7 @@
     showPopup("Agora somos 2002 alunos", 157000);
     showPopup("João Pedro colocou seu negócio no Mapa Digital", 195000);
     showPopup("Agora somos 2003 alunos", 197000);
+  </script>
   </script>
 </body>
 </html>
